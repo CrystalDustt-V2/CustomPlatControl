@@ -1,0 +1,69 @@
+{
+	"geode": "5.0.0-beta.2",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
+	},
+	"id": "crystaldust.customplatcontrol",
+	"name": "CustomPlatControl",
+	"version": "v1.0.0",
+	"developer": "CrystalDust",
+	"description": "Custom Platformer Key Remapping",
+	"dependencies": {
+		"geode.node-ids": ">=v1.20.0"
+	},
+	"tags": [
+		"offline",
+		"customization",
+		"gameplay",
+		"performance"
+	],
+	"settings": {
+		"Platformer_Player1_Title": {
+			"type": "title",
+			"name": "Player 1"
+		},
+		"Player1_Left": {
+			"type": "keybind",
+			"name": "Player 1 Left",
+			"description": "Platformer left movement key for Player 1",
+			"default": "A"
+		},
+		"Player1_Jump": {
+			"type": "keybind",
+			"name": "Player 1 Jump",
+			"description": "Platformer jump key for Player 1",
+			"default": "W"
+		},
+		"Player1_Right": {
+			"type": "keybind",
+			"name": "Player 1 Right",
+			"description": "Platformer right movement key for Player 1",
+			"default": "D"
+		},
+		"Platformer_Player2_Title": {
+			"type": "title",
+			"name": "Player 2"
+		},
+		"Player2_Left": {
+			"type": "keybind",
+			"name": "Player 2 Left",
+			"description": "Platformer left movement key for Player 2",
+			"default": "ArrowLeft"
+		},
+		"Player2_Jump": {
+			"type": "keybind",
+			"name": "Player 2 Jump",
+			"description": "Platformer jump key for Player 2",
+			"default": "ArrowUp"
+		},
+		"Player2_Right": {
+			"type": "keybind",
+			"name": "Player 2 Right",
+			"description": "Platformer right movement key for Player 2",
+			"default": "ArrowRight"
+		}
+	}
+}
