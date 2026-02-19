@@ -8,7 +8,7 @@ else()
 endif()
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
-project(CustomPlatControl VERSION 1.0.0)
+project(CustomPlatControl VERSION 1.0.1)
 
 # Add all source files inside src (recursively)
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
@@ -21,6 +21,13 @@ if (NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR "Unable to find Geode SDK! Please define GEODE_SDK environment variable to point to Geode")
 else()
     message(STATUS "Found Geode: $ENV{GEODE_SDK}")
+endif()
+
+# [Geode v5.0.0-beta.3 Migration]
+# Work around MSVC + nontype_functional __builtin_* incompatibility by
+# disabling Geode PCH on non-Clang MSVC toolchains.
+if (MSVC AND NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    set(GEODE_DISABLE_PRECOMPILED_HEADERS ON)
 endif()
 
 add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)

@@ -28,21 +28,28 @@ namespace {
     Keybind getDefaultBind(Action action) {
         switch (action) {
             case Action::Player1Left:
-                return Keybind(cocos2d::KEY_A, Keybind::Mods_None);
+                // [Geode v5.0.0-beta.3 Migration]
+                return Keybind(cocos2d::KEY_A, KeyboardModifier::None);
             case Action::Player1Jump:
-                return Keybind(cocos2d::KEY_W, Keybind::Mods_None);
+                // [Geode v5.0.0-beta.3 Migration]
+                return Keybind(cocos2d::KEY_W, KeyboardModifier::None);
             case Action::Player1Right:
-                return Keybind(cocos2d::KEY_D, Keybind::Mods_None);
+                // [Geode v5.0.0-beta.3 Migration]
+                return Keybind(cocos2d::KEY_D, KeyboardModifier::None);
             case Action::Player2Left:
-                return Keybind(cocos2d::KEY_Left, Keybind::Mods_None);
+                // [Geode v5.0.0-beta.3 Migration]
+                return Keybind(cocos2d::KEY_Left, KeyboardModifier::None);
             case Action::Player2Jump:
-                return Keybind(cocos2d::KEY_Up, Keybind::Mods_None);
+                // [Geode v5.0.0-beta.3 Migration]
+                return Keybind(cocos2d::KEY_Up, KeyboardModifier::None);
             case Action::Player2Right:
-                return Keybind(cocos2d::KEY_Right, Keybind::Mods_None);
+                // [Geode v5.0.0-beta.3 Migration]
+                return Keybind(cocos2d::KEY_Right, KeyboardModifier::None);
             case Action::Count:
                 break;
         }
-        return Keybind(cocos2d::KEY_None, Keybind::Mods_None);
+        // [Geode v5.0.0-beta.3 Migration]
+        return Keybind(cocos2d::KEY_None, KeyboardModifier::None);
     }
 
     bool isKeyboardBind(Keybind const& bind) {
@@ -51,7 +58,16 @@ namespace {
             return false;
         }
 
-        return key < 1000 || key > 2000;
+        // [Geode v5.0.0-beta.3 Migration]
+        // Exclude controller range and Geode mouse button keycodes.
+        auto const isController =
+            bind.key >= cocos2d::CONTROLLER_A &&
+            bind.key <= cocos2d::CONTROLLER_RTHUMBSTICK_RIGHT;
+        auto const isMouse =
+            bind.key >= cocos2d::MOUSE_4 &&
+            bind.key <= cocos2d::MOUSE_8;
+
+        return !isController && !isMouse;
     }
 
     std::vector<Keybind> sanitizeBinds(Action action, std::vector<Keybind> const& input) {

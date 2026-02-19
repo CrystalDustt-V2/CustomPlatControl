@@ -1,3 +1,4 @@
+#include "CompilerCompat.hpp"
 #include <Geode/Geode.hpp>
 #include "CustomPlatControl.hpp"
 
