@@ -1,3 +1,9 @@
+# 1.0.2
+- Updated for Geode v5.0.0-beta.4.
+- Updated mod metadata to beta.4 schema and added `requires-patching`.
+- Removed obsolete beta.3 MSVC compatibility workaround after beta.4 dependency updates.
+- Verified input/state handling remains stable and unchanged (platformer-only override, held-input persistence).
+
 # 1.0.1
 - Updated for Geode v5.0.0-beta.3.
 - Migrated to the new keybind category system.

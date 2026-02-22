@@ -1,6 +1,5 @@
 #pragma once
 
-#include "CompilerCompat.hpp"
 #include <Geode/Geode.hpp>
 #include <span>
 #include <string_view>
