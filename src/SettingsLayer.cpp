@@ -28,27 +28,20 @@ namespace {
     Keybind getDefaultBind(Action action) {
         switch (action) {
             case Action::Player1Left:
-                // [Geode v5.0.0-beta.3 Migration]
                 return Keybind(cocos2d::KEY_A, KeyboardModifier::None);
             case Action::Player1Jump:
-                // [Geode v5.0.0-beta.3 Migration]
                 return Keybind(cocos2d::KEY_W, KeyboardModifier::None);
             case Action::Player1Right:
-                // [Geode v5.0.0-beta.3 Migration]
                 return Keybind(cocos2d::KEY_D, KeyboardModifier::None);
             case Action::Player2Left:
-                // [Geode v5.0.0-beta.3 Migration]
                 return Keybind(cocos2d::KEY_Left, KeyboardModifier::None);
             case Action::Player2Jump:
-                // [Geode v5.0.0-beta.3 Migration]
                 return Keybind(cocos2d::KEY_Up, KeyboardModifier::None);
             case Action::Player2Right:
-                // [Geode v5.0.0-beta.3 Migration]
                 return Keybind(cocos2d::KEY_Right, KeyboardModifier::None);
             case Action::Count:
                 break;
         }
-        // [Geode v5.0.0-beta.3 Migration]
         return Keybind(cocos2d::KEY_None, KeyboardModifier::None);
     }
 
@@ -58,7 +51,6 @@ namespace {
             return false;
         }
 
-        // [Geode v5.0.0-beta.3 Migration]
         // Exclude controller range and Geode mouse button keycodes.
         auto const isController =
             bind.key >= cocos2d::CONTROLLER_A &&

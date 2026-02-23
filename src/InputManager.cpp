@@ -10,8 +10,6 @@ std::unordered_map<int, bool> customplatcontrol::g_keyStates;
 namespace {
     bool s_initialized = false;
 
-    // [Geode v5.0.0-beta.3 Migration]
-    // Keybind modifiers now use `KeyboardModifier` instead of `Keybind::Modifiers`.
     bool hasModifier(geode::KeyboardModifier value, geode::KeyboardModifier flag) {
         return (static_cast<uint8_t>(value) & static_cast<uint8_t>(flag)) != 0;
     }
@@ -25,7 +23,6 @@ namespace {
         return false;
     }
 
-    // [Geode v5.0.0-beta.3 Migration]
     bool areRequiredModifiersDown(geode::KeyboardModifier modifiers) {
         if (hasModifier(modifiers, geode::KeyboardModifier::Control) && !isAnyDown({
             cocos2d::KEY_Control,
@@ -68,16 +65,13 @@ void customplatcontrol::initializeInputManager() {
     }
     s_initialized = true;
 
-    // [Geode v5.0.0-beta.3 Migration]
-    // Use explicit listener priority + propagation handling for the updated input event system.
     KeyboardInputEvent().listen([](KeyboardInputData& data) {
         if (data.key == cocos2d::KEY_Unknown || data.key == cocos2d::KEY_None) {
             return ListenerResult::Propagate;
         }
 
-        // [Geode v5.0.0-beta.3 Migration]
-        // Keep tracking real-time key state (press/repeat/release). Timestamp/modifiers are provided
-        // by beta.3 and intentionally unused here because gameplay checks rely on held state only.
+        // Keep tracking real-time key state (press/repeat/release). Timestamp/modifiers
+        // are intentionally unused because gameplay checks rely on held state only.
         g_keyStates[static_cast<int>(data.key)] =
             data.action != KeyboardInputData::Action::Release;
         (void)data.timestamp;

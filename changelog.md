@@ -1,3 +1,8 @@
+# 1.0.3
+- Updated for Geode v5.0.0 stable.
+- Removed beta-specific migration notes/workarounds from source comments.
+- Verified clean compile/package on Geode v5.0.0 (Geometry Dash 2.2081 bindings).
+
 # 1.0.2
 - Updated for Geode v5.0.0-beta.4.
 - Updated mod metadata to beta.4 schema and added `requires-patching`.
